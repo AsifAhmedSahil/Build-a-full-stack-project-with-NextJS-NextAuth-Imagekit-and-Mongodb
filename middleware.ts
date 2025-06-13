@@ -15,7 +15,7 @@ export default withAuth(
             return true;
         }
 
-        if(token) return true; 
+        return !!token 
       },
     },
   }
@@ -23,7 +23,8 @@ export default withAuth(
 
 export const config = {
   matcher: [
-    // *match all request except
-    "((?!_next/static|_next/image|favicon.ico|public/).*)",
+    // Match everything except static files and public assets
+    "/((?!_next/static|_next/image|favicon.ico|public).*)",
   ],
-};
+}
+

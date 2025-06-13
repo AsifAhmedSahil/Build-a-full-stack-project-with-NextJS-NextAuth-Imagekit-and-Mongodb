@@ -5,7 +5,9 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json();
+    console.log("Received body:", { email, password });
     if (!email || !password) {
+        console.log("Missing email or password");
       return NextResponse.json(
         { error: "Email and password required!" },
         { status: 400 }
@@ -28,7 +30,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(
-      { error: "User Created Successfully" },
+      { message: "User Created Successfully" },
       { status: 201 }
     );
   } catch (error) {
